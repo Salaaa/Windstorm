@@ -3,7 +3,7 @@
  *
  * Credits to CreaturePhil and other contributors.
  * See: https://github.com/CreaturePhil/Showdown-Boilerplate/blob/master/chat-plugins/customavatar.js
- */
+ */s
 'use strict';
 
 /* eslint no-restricted-modules: [0] */
@@ -13,7 +13,7 @@ const path = require('path');
 const request = require('request');
 
 // The path where custom avatars are stored.
-const AVATAR_PATH = path.join(__dirname, '../config/avatars/');
+const AVATAR_PATH = path.join(__dirname, '../../config/avatars/');
 
 // The valid file extensions allowed.
 const VALID_EXTENSIONS = ['.jpg', '.png', '.gif'];
@@ -56,7 +56,7 @@ exports.commands = {
 			let parts = target.split(',').map(param => param.trim());
 			if (parts.length < 2) return this.parse('/help customavatar');
 
-			let name = toId(parts[0]);
+			let name = toID(parts[0]);
 			let avatarUrl = parts[1];
 			if (!/^https?:\/\//i.test(avatarUrl)) avatarUrl = 'http://' + avatarUrl;
 			let ext = path.extname(avatarUrl);
@@ -77,7 +77,7 @@ exports.commands = {
 		delete: function(target, room, user) {
 			if (!this.can('lock')) return false;
 
-			let userid = toId(target);
+			let userid = toID(target);
 			let image = Config.customavatars[userid];
 
 			if (!image) return this.errorReply(target + " does not have a custom avatar.");
