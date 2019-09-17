@@ -94,7 +94,7 @@ exports.commands = {
 				if (Users.get(userid)) Users.get(userid).popup("|html|" + user.name + " has deleted your custom avatar.");
 				this.sendReply(target + "'s avatar has been successfully removed.");
 				Monitor.adminlog(target + "'s avatar has been successfully removed by " + user.name + ".");
-				this.modlog('CUSTOMAVATAR DELETE: '${user.name}' from' + avatarUrl)
+				this.modlog('CUSTOMAVATAR DELETE: '${user.name}' from' + avatarUrl);
 			});
 		},
 
