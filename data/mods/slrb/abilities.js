@@ -28,7 +28,7 @@ let BattleAbilities = {
 				if (!targetTypes.length) {
 					if (target.addedType) {
 						targetTypes = ['Normal'];
-					} else {	
+					} else {
 						return false;
 					}
 				}
@@ -49,7 +49,6 @@ let BattleAbilities = {
 				}
 				if (!mons) return;
 				const chosen = mons[this.random(mons.length)];
-				
 				const generator = new RandomStaffBrosTeams('gen7randombattle', this.prng);
 				let set = generator.randomSet(chosen, '[silent]');
 				let setSpecies = set.species;
@@ -65,7 +64,6 @@ let BattleAbilities = {
 				} else if (this.getAbility(set.ability).id === "powerconstruct") {
 					setSpecies = "Zygarde-Complete";
 				}
-				
 				pokemon.formeChange(setSpecies);
 				for (let newMove of set.moves) {
 					let moveTemplate = this.getMove(newMove);
@@ -123,7 +121,7 @@ let BattleAbilities = {
 	// A Phantom
 	"phantomflex": {
 		shortDesc: "This Pokemon's Ghost moves have priority raised by 1.",
-		onModifyPriority: function (priority, pokemon, target, move) {
+		onModifyPriority(priority, pokemon, target, move) {
 			if (move && move.type === 'Ghost') {
 				return priority + 1;
 			}
@@ -134,7 +132,7 @@ let BattleAbilities = {
 	// barton
 	"vibrant": {
 		shortDesc: "This Pokemon's Fairy moves have priority raised by 1.",
-		onModifyPriority: function (priority, pokemon, target, move) {
+		onModifyPriority(priority, pokemon, target, move) {
 			if (move && move.type === 'Fairy') {
 				return priority + 1;
 			}
@@ -152,7 +150,7 @@ let BattleAbilities = {
 		onModifyPriority(priority, pokemon, target, move) {
 			if (move && move.category === 'Status') return priority + 1;
 		},
-		onModifyDef: function (def) {
+		onModifyDef(def) {
 			return this.chainModify(2);
 		},
 	},
@@ -202,7 +200,7 @@ let BattleAbilities = {
 		id: "heatrises",
 		name: "Heat Rises",
 		isNonstandard: true,
-		onTryHit: function (target, source, move) {
+		onTryHit(target, source, move) {
 			if (target !== source && (move.type === 'Fire' || move.type === 'Ground')) {
 				this.add('-immune', target, '[msg]', '[from] ability: Heat Rises');
 				return null;
@@ -275,27 +273,27 @@ let BattleAbilities = {
 	"redtunic": {
 		desc: "If this Pokemon is an Aegislash, it changes to Blade Forme before attempting to use an attacking move, and changes to Shield Forme before attempting to use King's Shield; halves the power of Fire-type attacks against this Pokemon and halves burn damage.",
 		shortDesc: "Stance Change + Heatproof + Prankster",
-		onBeforeMove: function (attacker, defender, move) {
+		onBeforeMove(attacker, defender, move) {
 			if (attacker.template.baseSpecies !== 'Aegislash' || attacker.transformed) return;
 			if (move.category === 'Status' && move.id !== 'kingsshield') return;
 			let targetSpecies = (move.id === 'kingsshield' ? 'Aegislash' : 'Aegislash-Blade');
 			if (attacker.template.species !== targetSpecies) attacker.formeChange(targetSpecies);
 			},
 		onModifyAtkPriority: 6,
-		onSourceModifyAtk: function (atk, attacker, defender, move) {
+		onSourceModifyAtk(atk, attacker, defender, move) {
 			if (move.type === 'Fire') {
 				this.debug('Red Tunic weaken');
 				return this.chainModify(0.5);
 			}
 		},
 		onModifySpAPriority: 5,
-		onSourceModifySpA: function (atk, attacker, defender, move) {
+		onSourceModifySpA(atk, attacker, defender, move) {
 			if (move.type === 'Fire') {
 				this.debug('Red Tunic weaken');
 				return this.chainModify(0.5);
 			}
 		},
-		onModifySpA: function (atk, attacker, defender, move) {
+		onModifySpA(atk, attacker, defender, move) {
 			if (move.type === '???') {
 				this.debug('Red Tunic boost');
 				return this.chainModify(1.5);
@@ -307,7 +305,7 @@ let BattleAbilities = {
 				return priority + 1;
 			}
 		},
-		onDamage: function (damage, target, source, effect) {
+		onDamage(damage, target, source, effect) {
 			if (effect && effect.id === 'brn') {
 				return damage / 2;
 			}
