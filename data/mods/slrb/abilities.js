@@ -239,7 +239,7 @@ let BattleAbilities = {
 			pokemon.types = pokemon.illusion.types;
 		},
 		onAfterDamage(damage, target, source, effect) {
-			if (target.illusion && effect && effect.effectType === 'Move' && effect.id !== 'confused'  && this.getEffectiveness(effect.type, target.getTypes()) > 0) {
+			if (target.illusion && effect && effect.effectType === 'Move' && effect.id !== 'confused' && this.getEffectiveness(effect.type, target.getTypes()) > 0) {
 				this.singleEvent('End', this.getAbility('Illusion'), target.abilityData, target, source, effect);
 				target.types = ["Dark"];
 				let move = this.getMove('Busted');
@@ -278,7 +278,7 @@ let BattleAbilities = {
 			if (move.category === 'Status' && move.id !== 'kingsshield') return;
 			let targetSpecies = (move.id === 'kingsshield' ? 'Aegislash' : 'Aegislash-Blade');
 			if (attacker.template.species !== targetSpecies) attacker.formeChange(targetSpecies);
-			},
+		},
 		onModifyAtkPriority: 6,
 		onSourceModifyAtk(atk, attacker, defender, move) {
 			if (move.type === 'Fire') {
@@ -316,9 +316,9 @@ let BattleAbilities = {
 	// i want a lamp
 	"flashdrive": {
 		shortDesc: "This Pokemon's attacks that are not very effective on a target deal double damage.",
-		onStart: function (pokemon) {
+		onStart(pokemon) {
 			let foespe = 0;
-			let myspe = pokemon.getStat('spe', false,true);
+			let myspe = pokemon.getStat('spe', false, true);
 			for (const target of pokemon.side.foe.active) {
 				if (!target || target.fainted) continue;
 				foespe += target.getStat('spe', false, true);
@@ -329,7 +329,7 @@ let BattleAbilities = {
 				this.boost({spa: 1});
 			}
 		},
-		onModifyDamage: function (damage, source, target, move) {
+		onModifyDamage(damage, source, target, move) {
 			if (move.typeMod < 0) {
 				this.debug('Flashdrive boost');
 				return this.chainModify(2);
@@ -343,7 +343,7 @@ let BattleAbilities = {
 		desc: "This Pokemon's punch-based attacks have their power multiplied by 2.",
 		shortDesc: "This Pokemon's punch-based attacks have 2x power.",
 		onBasePowerPriority: 8,
-		onBasePower: function (basePower, attacker, defender, move) {
+		onBasePower(basePower, attacker, defender, move) {
 			if (move.flags['punch']) {
 				this.debug('Jolt Haymaker boost');
 				return this.chainModify(2);
@@ -357,8 +357,8 @@ let BattleAbilities = {
 		shortDesc: "Ability gains effects of Adaptability & Serene Grace if all allies have fainted.",
 		id: "fallenwarriors",
 		name: "Fallen Warriors",
-		onModifyMove: function (move, pokemon) {
-			if (pokemon.side.pokemon.length == 1) {
+		onModifyMove(move, pokemon) {
+			if (pokemon.side.pokemon.length === 1) {
 				move.stab = 2;
 			}
 		},
@@ -378,18 +378,18 @@ let BattleAbilities = {
 	miraclesand: {
 		desc: "If Sandstorm is active, this Pokemon's Speed and Defense are multiplied by 1.5. This Pokemon takes no damage from Sandstorm.",
 		shortDesc: "If Sandstorm is active, this Pokemon's Spe/Def are 1.5x; immunity to Sandstorm.",
-		onImmunity: function (type, pokemon) {
+		onImmunity(type, pokemon) {
 			if (type === 'sandstorm') return false;
 		},
-		onSwitchOut: function (pokemon) {
+		onSwitchOut(pokemon) {
 			pokemon.happiness = 255;
 		},
-		onModifySpe: function (spe, pokemon) {
+		onModifySpe(spe, pokemon) {
 			if (this.field.isWeather('sandstorm')) {
 				return this.chainModify(1.5);
 			}
 		},
-		onModifyDef: function (def) {
+		onModifyDef(def) {
 			if (this.field.isWeather('sandstorm')) {
 				return this.chainModify(1.5);
 			}
@@ -425,7 +425,7 @@ let BattleAbilities = {
 		effect: {},
 		id: "foodcoma",
 		name: "Food Coma",
-	},	
+	},
 	// yo boi arthurlis
 	"harvestingsummer": {
 		desc: "Half damage from Fire/Ice. 50% chance to respawn item. Weight doubled.",
@@ -459,7 +459,6 @@ let BattleAbilities = {
 		id: "harvestingsummer",
 		name: "Harvesting Summer",
 	},
-	
 };
 
 exports.BattleAbilities = BattleAbilities;
