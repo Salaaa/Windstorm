@@ -6,13 +6,13 @@ let BattleStatuses = {
 	// Example:
 	userid: {
 		noCopy: true,
-		onStart: function () {
+		onStart() {
 			this.add(`c|+Username|Switch In Message`);
 		},
-		onSwitchOut: function () {
+		onSwitchOut() {
 			this.add(`c|+Username|Switch Out Message`);
 		},
-		onFaint: function () {
+		onFaint() {
 			this.add(`c|+Username|Faint Message`);
 		},
 		// Innate effects go here
@@ -47,18 +47,18 @@ let BattleStatuses = {
 	},
 	afkrchastl: {
 		noCopy: true,
-		onStart: function () {
+		onStart() {
 			//this.add(`c|+Kaiju Bunny|Hey there! Good luck!`);
 		},
-		onSwitchOut: function () {
+		onSwitchOut() {
 			//this.add(`c|+Kaiju Bunny|Don't keep her from battling for too long!`);
 		},
-		onFaint: function () {
+		onFaint() {
 			//this.add(`c|+Kaiju Bunny|She tried her best... ;;`);
 		},
 		// Kaiju Rage Innate
 		// onUpdate so toxic orb can activate after. Code mainly copied from Power Construct.
-		onUpdate: function (pokemon) {
+		onUpdate(pokemon) {
 			if (pokemon.template.speciesid !== 'lilligant' || pokemon.transformed || pokemon.illusion || !pokemon.hp) return;
 			if (pokemon.hp > pokemon.maxhp / 2) return;
 			this.add('-activate', pokemon, 'ability: no longer AFK');
@@ -83,69 +83,69 @@ let BattleStatuses = {
 		id: 'arceus',
 		num: 493,
 		onTypePriority: 1,
-		onType: function (types, pokemon) {
+		onType(types, pokemon) {
 			return ["Ghost", "Grass"];
 		},
 	},
 	betadog: {
 		noCopy: true, 
-		onStart: function () {
+		onStart() {
 			this.add(`c|+BetaDog|Oh, hi! I brought some blankets!`);
 		},
-		onSwitchOut: function () {
+		onSwitchOut() {
 			this.add(`c|+BetaDog|BRB getting blankets`);
 		},
-		onFaint: function () {
+		onFaint() {
 			this.add(`c|+BetaDog|Not enough blankets?`);
 		},
 	},
 	bigboyteddy: {
 		noCopy: true, 
-		onStart: function () {
+		onStart() {
 			this.add(`c| Big Boy Teddy|Did someone say muffin?`);
 		},
-		onSwitchOut: function () {
+		onSwitchOut() {
 			this.add(`c| Big Boy Teddy|gtg, luv u all! except u Moxie Latios >:(`);
 		},
-		onFaint: function () {
+		onFaint() {
 			this.add(`c| Big Boy Teddy|where da muffin at? :(`);
 		},
 	},
 	barton: {
 		noCopy: true, 
-		onStart: function () {
+		onStart() {
 			this.add(`c|+barton|ESKETIT`);
 		},
-		onSwitchOut: function () {
+		onSwitchOut() {
 			this.add(`c|+barton|peace y'all`);
 		},
-		onFaint: function () {
+		onFaint() {
 			this.add(`c|+barton|drat`);
 		},
 	},
 	brownisaur: {
 		noCopy: true, 
-		onStart: function (source) {
+		onStart(source) {
 			source.types = ['Fairy', 'Psychic'];
 			this.add('-start', source, 'typechange', `Fairy/Psychic`);
 			this.add(`c|@browni☿️saur|hug first, ask questions later.`);
 		},
-		onSwitchOut: function () {
+		onSwitchOut() {
 			this.add(`c|@browni☿️saur|that wasn't very nice ;-;`);
 		},
-		onFaint: function () {
+		onFaint() {
 			this.add(`c|@browni☿️saur|should have banned you when I had the chance`);
 		},
 	},
 	brucewee: {
 		noCopy: true, 
-		onStart: function () {
+		onStart() {
 			this.add(`c| BruceWee|I like trains`);
 		},
-		onSwitchOut: function () {
+		onSwitchOut() {
 			this.add(`c| BruceWee|ye`);
 		},
-		onFaint: function () {
+		onFaint() {
 			this.add(`c| BruceWee|weird flex but ok`);
 		},
 	},
@@ -224,13 +224,13 @@ let BattleStatuses = {
 	},
 	iwantalamp: {
 		noCopy: true, 
-		onStart: function () {
+		onStart() {
 			this.add(`c| i want a lamp|WHERE IS MY LAMP`);
 		},
-		onSwitchOut: function () {
+		onSwitchOut() {
 			this.add(`c| i want a lamp|hold on, i think ive found my lamp`);
 		},
-		onFaint: function () {
+		onFaint() {
 			this.add(`c| i want a lamp|ZZzzzZZzZzZZZlampzZZzZZzZ`);
 		},
 	},
@@ -316,37 +316,37 @@ let BattleStatuses = {
 	},
 	mustard: {
 		noCopy: true, 
-		onStart: function () {
+		onStart() {
 			this.add(`c|@mustard|hi`);
 		},
-		onSwitchOut: function () {
+		onSwitchOut() {
 			this.add(`c|@mustard|Hell yeah, brother! Cheers from Iraq!`);
 		},
-		onFaint: function () {
+		onFaint() {
 			this.add(`c|@mustard|Unluckeee`);
 		},
 	},
    rYGLY: {
 		noCopy: true,
-		onStart: function () {
-			this.add(`c|rYGLY|(Here come dat boi`);
+		onStart() {
+			this.add(`c|@rYGLY|(Here come dat boi`);
 		},
-		onSwitchOut: function () {
-			this.add(`c|rYGLY|Gottem`);
+		onSwitchOut() {
+			this.add(`c|@rYGLY|Gottem`);
 		},
-		onFaint: function () {
-			this.add(`c|rYGLY|poor monkey ;-;`);
+		onFaint() {
+			this.add(`c|@rYGLY|poor monkey ;-;`);
 		},
 	},
    sacredlatias: {
        noCopy: true,
-       onStart: function () {
+       onStart() {
            this.add(`c|%SacredLatias|Latias for ag, just saying.`);
        },
-       onSwitchOut: function () {
+       onSwitchOut() {
            this.add(`c|%SacredLatias|Come onnnn, I coulda taken one more hit!`);
        },
-       onFaint: function () {
+       onFaint() {
            this.add(`c|%SacredLatias|Them spoopnoodles finally got the best of me...`);
        },
    },
@@ -377,39 +377,39 @@ let BattleStatuses = {
 	},
 	pinkdragontamer: {
 		noCopy: true, 
-		onStart: function () {
+		onStart() {
 			this.add(`c|%pinkdragontamer|i got 3 heads bitch`);
 		},
-		onSwitchOut: function () {
+		onSwitchOut() {
 			this.add(`c|%pinkdragontamer|im out this bih`);
 		},
-		onFaint: function () {
+		onFaint() {
 			this.add(`c|%pinkdragontamer|!faq you`);
 		},
 	},
 	polestarobey: {
 		noCopy: true, 
-		onStart: function () {
+		onStart() {
 			this.add(`c| Polestar Obey|let's get this going!`);
 			this.add(`c| Polestar Obey|here comes my strongest and best friend!`);
 		},
-		onSwitchOut: function () {
+		onSwitchOut() {
 			this.add(`c| Polestar Obey|I'll return you for now.`);
 		},
-		onFaint: function () {
+		onFaint() {
 			this.add(`c| Polestar Obey|My friends, I mourn you`);
 		},
 	},
 	pokemondeadchannel: {
 		noCopy: true, 
-		onStart: function (source) {
+		onStart(source) {
 			this.add(`c|+PokemonDeadChannel|/me changes names`);
 		},
-		onSwitchOut: function () {
+		onSwitchOut() {
 			this.add(`c|+PokemonDeadChannel|>im not broken`);
 			this.add(`c|+PokemonDeadChannel|ok guess I gotta buff myself :^)`);
 		},
-		onFaint: function () {
+		onFaint() {
 			this.add(`c|+PokemonDeadChannel|bullies :(`);
 		},
 	},
@@ -437,10 +437,10 @@ let BattleStatuses = {
 				this.add(`c|‽VanillaBobcat|Game of Thrones is a terrible show.`);
 			}
 		},
-		onSwitchOut: function () {
+		onSwitchOut() {
 			this.add(`c|‽VanillaBobcat|=(O w O)=`);
 		},
-		onFaint: function () {
+		onFaint() {
 			this.add(`c|‽VanillaBobcat|[[shoutouts to my squad]]`);
 		},
 	},
@@ -461,7 +461,7 @@ let BattleStatuses = {
 		name: 'L',
 		id: 'leffect',
 		// this is a volatile status
-		onStart: function (target, source, sourceEffect) {
+		onStart(target, source, sourceEffect) {
 			if (sourceEffect && sourceEffect.id === 'lockedmove') {
 				this.add('-start', target, 'l', '[fatigue]');
 			} else {
@@ -469,11 +469,11 @@ let BattleStatuses = {
 			}
 			this.effectData.time = this.random(2, 6);
 		},
-		onEnd: function (target) {
+		onEnd(target) {
 			this.add('-end', target, 'l');
 		},
 		onModifyMovePriority: -2,
-		onModifyMove: function (move, pokemon) {
+		onModifyMove(move, pokemon) {
 			if (move.type === 'Normal' && move.id !== 'naturalgift') {
 				move.type = pokemon.set.shiny && pokemon.types[1] || pokemon.types[0];
 			}

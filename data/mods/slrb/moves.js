@@ -1,8 +1,8 @@
 'use strict';
 
 // Used for bumbadadabum and Snaquaza's move
-const RandomStaffBrosTeams = require('./random-teams');
-const Pokemon = require(/** @type {any} */ ('../../../.sim-dist/pokemon')).Pokemon;
+// const RandomStaffBrosTeams = require('./random-teams');
+// const Pokemon = require(/** @type {any} */ ('../../../.sim-dist/pokemon')).Pokemon;
 
 /** @type {{[k: string]: ModdedMoveData}} */
 let BattleMovedex = {
@@ -148,7 +148,6 @@ let BattleMovedex = {
 		onModifyMove(move, pokemon) {
 			this.field.setWeather('sunnyday');
 		},
-		secondary: null,
 		target: "normal",
 		type: "Fire",
 		secondary: {
@@ -187,7 +186,7 @@ let BattleMovedex = {
 		desc: "Deals damage two turns after this move is used. At the end of that turn, the damage is calculated at that time and dealt to the opponent.",
 		shortDesc: "Hits two turns after being used.",
 		id: 'zwischenzung',
-		name: "Zwischenzung".
+		name: "Zwischenzung",
 		pp: 5,
 		priority: 0,
 		flags: {},
@@ -195,19 +194,19 @@ let BattleMovedex = {
 		onTry(source, target) {
 			if (!target.side.addSlotCondition(target, 'futuremove')) return false;
 			Object.assign(target.side.slotConditions[target.position]['futuremove'], {
-			move: 'zwischenzung',
-			source: source,
-			moveData: {
-				id: 'zwischenzung',
-				name: "Zwischenzung",
-				accuracy: 100,
-				basePower: 120, 
-				category: "Special",
-				priority: 0,
-				flags: {},
-				effectType: 'Move',
-				isFutureMove: true,
-				type: 'Fairy',
+				move: 'zwischenzung',
+				source: source,
+				moveData: {
+					id: 'zwischenzung',
+					name: "Zwischenzung",
+					accuracy: 100,
+					basePower: 120,
+					category: "Special",
+					priority: 0,
+					flags: {},
+					effectType: 'Move',
+					isFutureMove: true,
+					type: 'Fairy',
 				},
 			});
 			this.add('-start', source, 'Future Sight');
@@ -215,7 +214,7 @@ let BattleMovedex = {
 		},
 		secondary: null,
 		target: "normal",
-		type: "Fairy"
+		type: "Fairy",
 	},
 	// BetaDog
 	"snuggles": {
@@ -298,10 +297,8 @@ let BattleMovedex = {
 		onTryMove() {
 			this.attrLastMove('[still]');
 		},
-		onPrepareHit(target, source) {
-			this.add('-anim', source, "Conversion", source);
-		},
 		onPrepareHit(target, source, move) {
+			this.add('-anim', source, "Conversion", source);
 			this.add('-anim', source, 'Judgment', target);
 			this.add('-anim', target, 'Extreme Evoboost', target);
 		},
@@ -331,7 +328,7 @@ let BattleMovedex = {
 		isNonstandard: "Custom",
 		pp: 10,
 		priority: 0,
-		flags: {protect:0, snatch: 1, mirror: 1},
+		flags: {protect: 0, snatch: 1, mirror: 1},
 		volatileStatus: 'confusion',
 		boosts: {
 			atk: 2,
@@ -361,7 +358,7 @@ let BattleMovedex = {
 		isNonstandard: "Custom",
 		pp: 20,
 		priority: 0,
-		flags: {protect: 1, mirror: 1,},
+		flags: {protect: 1, mirror: 1},
 		onPrepareHit(target, source) {
 			if (target.getTypes().join() === 'Electric' || !target.setType('Electric')) {
 				// Soak should animate even when it fails.
@@ -397,7 +394,7 @@ let BattleMovedex = {
 			if (this.random(100) >= 15) {
 				target.addVolatile('attract');
 			}
-				this.heal(source.maxhp / 2, source);
+			this.heal(source.maxhp / 2, source);
 		},
 		target: "normal",
 		type: "Fairy",

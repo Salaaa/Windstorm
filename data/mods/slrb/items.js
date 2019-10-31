@@ -2,7 +2,6 @@
 
 /**@type {{[k: string]: ModdedItemData}} */
 let BattleItems = {
-	
 	// brownisaur
 	browniumz: {
 		id: "browniumz",
@@ -58,15 +57,15 @@ let BattleItems = {
 		name: "Dew of Dewm",
 		isNonstandard: "Custom",
 		onTakeItem: false,
-		onBasePower: function () {},
+		onBasePower() {},
 		onModifySpAPriority: 1,
-		onModifySpA: function (spa, pokemon) {
+		onModifySpA(spa, pokemon) {
 			if (pokemon.baseTemplate.num === 380 || pokemon.baseTemplate.num === 381) {
 				return this.chainModify(1.5);
 			}
 		},
 		onModifySpDPriority: 2,
-		onModifySpD: function (spd, pokemon) {
+		onModifySpD(spd, pokemon) {
 			if (pokemon.baseTemplate.num === 380 || pokemon.baseTemplate.num === 381) {
 				return this.chainModify(1.5);
 			}
@@ -74,7 +73,6 @@ let BattleItems = {
 		gen: 7,
 		desc: "If held by a Latias or a Latios, its Sp. Atk and Sp. Def are 1.5x.",
 	},
-	
 	"satsuma": {
 		id: "satsuma",
 		name: "Satsuma",
@@ -82,25 +80,23 @@ let BattleItems = {
 		isNonstandard: "Custom",
 		onResidualOrder: 5,
 		onResidualSubOrder: 2,
-		onResidual: function (pokemon) {
+		onResidual(pokemon) {
 			if (this.field.isTerrain('grassyterrain')) return;
 			this.heal(pokemon.maxhp / 16);
 		},
-		onTerrain: function (pokemon) {
+		onTerrain(pokemon) {
 			if (!this.field.isTerrain('grassyterrain')) return;
 			this.heal(pokemon.maxhp / 16);
 		},
 		gen: 2,
 		desc: "At the end of every turn, holder restores 1/16 of its max HP.",
 	},
-	
-	
 	"distortedlens": {
 		id: "distortedlens",
 		name: "Distorted Lens",
 		spritenum: 35,
 		isNonstandard: "Custom",
-		onSourceModifyDamage: function (damage, source, target, move) {
+		onSourceModifyDamage(damage, source, target, move) {
 			if (move.type === 'Fighting' && (!target.volatiles['substitute'] || move.flags['authentic'] || (move.infiltrates && this.gen >= 6))) {
 				this.debug('-50% reduction');
 				this.add('-enditem', target, this.effect, '[weaken]');

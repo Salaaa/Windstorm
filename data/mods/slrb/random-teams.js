@@ -51,19 +51,19 @@ class RandomStaffBrosTeams extends RandomTeams {
 				species: 'Mew', ability: 'Arcane Tactics', item: 'Leftovers', gender: 'M',
 				moves: ['Moonblast', 'Roost', 'Substitute'],
 				signatureMove: "A's Secret Plan",
-				evs: {hp: 192, def: 96, spd: 56, spe:164}, nature: 'Timid', shiny: true,
+				evs: {hp: 192, def: 96, spd: 56, spe: 164}, nature: 'Timid', shiny: true,
 			},
 			'A Phantom': {
 				species: 'Phantump', ability: 'Phantom Flex', item: 'Power Herb', gender: 'M',
 				moves: ['Hex', 'Geomancy', 'Power Trip'],
 				signatureMove: "Forest Fire",
-				evs: {def: 4, spa: 252, spe:252}, nature: 'Timid',
+				evs: {def: 4, spa: 252, spe: 252}, nature: 'Timid',
 			},
 			'AFKrchasTL': {
 				species: 'Lilligant', ability: 'AFK', item: 'Life Orb', gender: 'F',
 				moves: ['Seed Flare', 'Stun Spore', 'Quiver Dance'],
 				signatureMove: 'Nerd Slandering',
-				evs: {spa: 252, spd:4, spe: 252}, nature: 'Timid',
+				evs: {spa: 252, spd: 4, spe: 252}, nature: 'Timid',
 			},
 			'barton': {
 				species: 'Clefable', ability: 'Vibrant', item: 'Satsuma', gender: 'M',
@@ -117,7 +117,7 @@ class RandomStaffBrosTeams extends RandomTeams {
 				species: 'Kartana', ability: 'Heat Rises', item: 'Fartium-Z', gender: 'M',
 				moves: ['Sunsteel Strike', 'Play Rough', 'U-turn'],
 				signatureMove: 'Soup Time!',
-				evs: {atk: 252, def: 4, spe: 252}, nature: 'Jolly', shiny:true,
+				evs: {atk: 252, def: 4, spe: 252}, nature: 'Jolly', shiny: true,
 			},
 			'Flare': {
 				species: 'Zoroark', ability: 'Super Illusion', item: 'Focus Sash', gender: 'M',
@@ -213,8 +213,8 @@ class RandomStaffBrosTeams extends RandomTeams {
 				species: 'Monferno', ability: 'Adaptability', item: 'Life orb', gender: 'M',
 				moves: ['Close Combat', 'Mach Punch', 'U-turn'],
 				signatureMove: 'Wu-Kong Fist',
-				evs: {hp: 4, atk: 252, spe:252}, nature: 'Jolly',
-        },
+				evs: {hp: 4, atk: 252, spe: 252}, nature: 'Jolly',
+			},
 			'SacredLatias': {
 				species: 'Latias', ability: 'Neuroforce', item: 'Dew of Dewm', gender: 'F',
 				moves: ['Quiver Dance', 'Roost', 'Core Enforcer'],
@@ -308,7 +308,7 @@ class RandomStaffBrosTeams extends RandomTeams {
 			} else {
 				set.evs = {hp: 84, atk: 84, def: 84, spa: 84, spd: 84, spe: 84};
 			}
-			while (set.moves.length < 3  && ssbSet.moves.length > 0) {
+			while (set.moves.length < 3 && ssbSet.moves.length > 0) {
 				let move = this.sampleNoReplace(ssbSet.moves);
 				if (Array.isArray(move)) move = this.sampleNoReplace(move);
 				set.moves.push(move);
