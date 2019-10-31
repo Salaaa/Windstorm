@@ -187,7 +187,7 @@ let BattleMovedex = {
 		desc: "Deals damage two turns after this move is used. At the end of that turn, the damage is calculated at that time and dealt to the opponent.",
 		shortDesc: "Hits two turns after being used.",
 		id: 'zwischenzung',
-		name: "Zwischenzung".
+		name: "Zwischenzung",
 		pp: 5,
 		priority: 0,
 		flags: {},
