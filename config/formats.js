@@ -1287,7 +1287,7 @@ let Formats = [
 			}
 		},
 	},
-{
+	{
 		name: "[Gen 7] Super Staff Bros Brawl (Old)",
 		desc: "Super Staff Bros returns for another round! Battle with a random team of pokemon created by the sim staff.",
 		threads: [
@@ -1331,12 +1331,11 @@ let Formats = [
 		mod: 'slrb',
 		team: 'randomStaffBros',
 		ruleset: ['HP Percentage Mod', 'Cancel Mod', 'Sleep Clause Mod'],
-		onBegin: function () {
+		onBegin() {
 			this.add('raw|SUPER LOBBY REGULAR BROS <b>64</b>!!');
 			this.add('message', 'GET READY FOR THE NEXT BATTLE!');
-
 		},
-		onSwitchIn: function (pokemon) {
+		onSwitchIn(pokemon) {
 			let name = toID(pokemon.illusion ? pokemon.illusion.name : pokemon.name);
 			if (this.getTemplate(name).exists) {
 				// Certain pokemon have volatiles named after their speciesid
@@ -1355,7 +1354,6 @@ let Formats = [
 	},	
 	{
 		name: "[Gen 7] Challenge Cup 1v1",
-
 		mod: 'gen7',
 		team: 'randomCC',
 		teamLength: {
