@@ -1351,7 +1351,7 @@ let Formats = [
 				pokemon.addVolatile(name, pokemon);
 			}
 		},
-	},	
+	},
 	{
 		name: "[Gen 7] Challenge Cup 1v1",
 		mod: 'gen7',
