@@ -26,6 +26,13 @@ let BattlePokedex = {
 		inherit: true,
 		abilities: {0: 'AFK'},
 	},
+	// Aus Elise
+	meowsticf:{
+		inherit: true,
+		abilities: {0: 'Regenerator'},
+		baseStats: {hp: 103, atk: 60, def: 126, spa: 80, spd: 126, spe: 50},
+		types: ['Normal', 'Fairy'],
+	},
 	// Barton
 	clefable: {
 		inherit: true,
